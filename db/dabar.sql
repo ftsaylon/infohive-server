@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.7.24, for Linux (x86_64)
+-- MySQL dump 10.13  Distrib 5.7.25, for Linux (x86_64)
 --
 -- Host: localhost    Database: dabar
 -- ------------------------------------------------------
--- Server version	5.7.24-0ubuntu0.18.04.1
+-- Server version	5.7.25-0ubuntu0.18.04.2
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -32,7 +32,7 @@ CREATE TABLE `cart` (
   PRIMARY KEY (`id`),
   KEY `user_id` (`user_id`),
   CONSTRAINT `cart_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -41,6 +41,7 @@ CREATE TABLE `cart` (
 
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
+INSERT INTO `cart` VALUES (1,3,0,'2018-11-15 06:21:56',0,0);
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -97,7 +98,7 @@ CREATE TABLE `category` (
 
 LOCK TABLES `category` WRITE;
 /*!40000 ALTER TABLE `category` DISABLE KEYS */;
-INSERT INTO `category` VALUES (1,'Food and Wine',NULL,0),(2,'Beauty',NULL,0);
+INSERT INTO `category` VALUES (1,'Food and Wine',NULL,0),(2,'Cosmetics',NULL,0);
 /*!40000 ALTER TABLE `category` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -115,7 +116,7 @@ CREATE TABLE `comment` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `commenter` varchar(512) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -124,6 +125,7 @@ CREATE TABLE `comment` (
 
 LOCK TABLES `comment` WRITE;
 /*!40000 ALTER TABLE `comment` DISABLE KEYS */;
+INSERT INTO `comment` VALUES (2,11,'It\'s Great.','2018-11-15 05:18:03','Francis Saylon'),(3,7,'It\'s Great.','2018-11-15 06:23:36','Ian Michael Urriza');
 /*!40000 ALTER TABLE `comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -148,7 +150,7 @@ CREATE TABLE `contact` (
   `updated` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `deleted` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -157,7 +159,7 @@ CREATE TABLE `contact` (
 
 LOCK TABLES `contact` WRITE;
 /*!40000 ALTER TABLE `contact` DISABLE KEYS */;
-INSERT INTO `contact` VALUES (1,'Aimee Lynn B Dupo','Institute of Biological Sciences, UP Los Banos','Los Baños','Laguna',4030,'09495362893',NULL,'http://uplb.edu.ph','2018-11-14 16:54:31','2018-11-14 16:54:31',0),(2,'Romeo Fenol','Mangas','Alfonso','Cavite',4213,'09164599973',NULL,'https://www.facebook.com/romy.','2018-11-14 16:55:03','2018-11-14 16:55:03',0),(3,'Aldrin Pagcaliwangan','Lipa Beekeepers and Marketers Cooperative, STIARC, Marawoy','Lipa','Batangas',4217,'09193688657',NULL,'','2018-11-14 16:55:53','2018-11-14 16:55:53',0),(4,'Joel Magsaysay','KM 47 ','Silang','Cavite',4118,'00000000000',NULL,'http://www.ilogmaria.com/shop','2018-11-14 16:56:33','2018-11-14 16:56:33',0),(5,'Edelie Omoyon','2259 Topacio St. ','San Juan','Metro Manila',900,'09178888438',NULL,'http://www.milea.ph','2018-11-14 16:57:29','2018-11-14 16:57:29',0),(6,'Romy Kimbungan','AR-48 Riverside, Ambiog','La Trinidad','Benguet',2601,'09106359578',NULL,'','2018-11-14 16:58:00','2018-11-14 16:58:00',0),(7,'Biboy Kurdapio','Umali Subd., College, Laguna','Los Baños','Laguna',4031,'09228493530',NULL,'akosibiboy.ph','2018-11-14 17:02:36','2018-11-14 17:02:36',0);
+INSERT INTO `contact` VALUES (1,'Aimee Lynn B Dupo','Institute of Biological Sciences, UP Los Banos','Los Baños','Laguna',4030,'09495362893',NULL,'http://uplb.edu.ph','2018-11-14 16:54:31','2018-11-14 16:54:31',0),(2,'Romeo Fenol','Mangas','Alfonso','Cavite',4213,'09164599973',NULL,'https://www.facebook.com/romy.','2018-11-14 16:55:03','2018-11-14 16:55:03',0),(3,'Aldrin Pagcaliwangan','Lipa Beekeepers and Marketers Cooperative, STIARC, Marawoy','Lipa','Batangas',4217,'09193688657',NULL,'','2018-11-14 16:55:53','2018-11-14 16:55:53',0),(4,'Joel Magsaysay','KM 47 ','Silang','Cavite',4118,'00000000000',NULL,'http://www.ilogmaria.com/shop','2018-11-14 16:56:33','2018-11-14 16:56:33',0),(5,'Edelie Omoyon','2259 Topacio St. ','San Juan','Metro Manila',900,'09178888438',NULL,'http://www.milea.ph','2018-11-14 16:57:29','2018-11-14 16:57:29',0),(6,'Romy Kimbungan','AR-48 Riverside, Ambiog','La Trinidad','Benguet',2601,'09106359578',NULL,'','2018-11-14 16:58:00','2018-11-14 16:58:00',0),(7,'Biboy Kurdapio','Umali Subd., College, Laguna','Los Baños','Laguna',4031,'09228493530',NULL,'akosibiboy.ph','2018-11-14 17:02:36','2018-11-14 17:02:36',0),(8,'Ian Urriza','Laguna','Angeles','Pampanga',4002,'09123456789',NULL,'','2018-11-15 06:34:46','2018-11-15 06:34:46',0);
 /*!40000 ALTER TABLE `contact` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -210,7 +212,7 @@ CREATE TABLE `pricechange` (
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `pricechange_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -219,9 +221,36 @@ CREATE TABLE `pricechange` (
 
 LOCK TABLES `pricechange` WRITE;
 /*!40000 ALTER TABLE `pricechange` DISABLE KEYS */;
-INSERT INTO `pricechange` VALUES (1,'2018-11-14 16:00:00',1,200),(2,'2018-11-14 16:00:00',2,150),(3,'2018-11-14 16:00:00',3,100),(4,'2018-11-14 16:00:00',4,100),(5,'2018-11-14 16:00:00',5,100),(6,'2018-11-14 16:00:00',6,100),(7,'2018-11-14 16:00:00',7,100),(8,'2018-11-14 16:00:00',8,75),(9,'2018-11-14 16:00:00',9,75),(10,'2018-11-14 16:00:00',10,75),(11,'2018-11-14 16:00:00',11,75),(12,'2018-11-14 16:00:00',12,75),(13,'2018-11-14 16:00:00',13,300);
+INSERT INTO `pricechange` VALUES (1,'2018-11-14 16:00:00',1,200),(2,'2018-11-14 16:00:00',2,150),(3,'2018-11-14 16:00:00',3,100),(4,'2018-11-14 16:00:00',4,100),(5,'2018-11-14 16:00:00',5,100),(6,'2018-11-14 16:00:00',6,100),(7,'2018-11-14 16:00:00',7,100),(8,'2018-11-14 16:00:00',8,75),(9,'2018-11-14 16:00:00',9,75),(10,'2018-11-14 16:00:00',10,75),(11,'2018-11-14 16:00:00',11,75),(12,'2018-11-14 16:00:00',12,75),(13,'2018-11-14 16:00:00',13,300),(14,'2018-11-14 16:00:00',14,10);
 /*!40000 ALTER TABLE `pricechange` ENABLE KEYS */;
 UNLOCK TABLES;
+
+DROP TABLE IF EXISTS `farm`;
+
+CREATE TABLE `farm`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `population` int(11),
+  `name` varchar(128) NOT NULL,
+  `lat` float(10,6) NOT NULL,
+  `lng` float(10,6) NOT NULL,
+  `type` varchar(30) NOT NULL, 
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `farm_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS `bee`;
+
+CREATE TABLE `bee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `farm_id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `imageUrl` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `bee_ibfk_1` FOREIGN KEY (`farm_id`) REFERENCES `farm` (`id`)
+);
 
 --
 -- Table structure for table `product`
@@ -237,7 +266,7 @@ CREATE TABLE `product` (
   `description` text NOT NULL,
   `distributorId` int(11) DEFAULT NULL,
   `contactId` int(11) DEFAULT NULL,
-  `farm_id` int(11) DEFAULT NULL,
+  `farm_id` int(11) DEFAULT NULL, 
   `price` float NOT NULL,
   `stock` int(10) NOT NULL,
   `size` varchar(128) DEFAULT NULL,
@@ -250,12 +279,11 @@ CREATE TABLE `product` (
   KEY `category_id` (`category_id`),
   KEY `distributorId` (`distributorId`),
   KEY `contactId` (`contactId`),
-  KEY `product_ibfk_4` (`farm_id`),
   CONSTRAINT `product_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `product_ibfk_2` FOREIGN KEY (`distributorId`) REFERENCES `distributor` (`id`),
   CONSTRAINT `product_ibfk_3` FOREIGN KEY (`contactId`) REFERENCES `contact` (`id`),
   CONSTRAINT `product_ibfk_4` FOREIGN KEY (`farm_id`) REFERENCES `farm` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -264,9 +292,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES 
-(1,1,'UPLB Honey','Honey produced by Eropean honey bees,\nApis melliferra, kept in various farm and\nurban environment. Viscous and sweet,\nbest for tea and toast with butter.',1,1,1,200,10,'300 grams','http://localhost:5000/images/image-1542215316458.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),
-(2,2,'Bee Pampered Virgin Coconut Oil Propolis Soap','Virgin Coconut Oil moisturizes skin and\nhas antioxidant properties while\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,150,10,'135 grams','http://localhost:5000/images/image-1542215348003.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(3,2,'Bee Pampered Papaya-Carrot Propolis Soap','Carrot and papaya help keep the skin\nwhite, soft and smooth. Propolis\nprevents and treats bacterial and fungal\nskin infections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215377395.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(4,2,'Bee Pampered Tea Tree Propolis Soap','Clears acne, helping create a naturally\nglowing smooth skin. . Propolis prevents\nand treats bacterial and fungal skin\ninfections',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215403795.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(5,2,'Bee Pampered Guava-Acapulco Propolis Soap','Guava and Acapulco treat tinea (ring\nworm) infections, eczema scabies,itch\nand insect bites. Propolis prevents and\ntreats bacterial and fungal skin\ninfections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215425508.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(6,2,'Bee Pampered Oatmeal Propolis Soap','Oatmeal moisturizes and exfoliates skin.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215447288.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(7,2,'Bee Pampered Coffee Propolis Soap','Coffee is a good antioxidant and\nexfoliant, that helps reduce skin aging.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,100,15,'135 grams','http://localhost:5000/images/image-1542259405956.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(8,2,'Bee Pampered Papaya-Carrot Propolis Soap','Carrot and papaya help keep the skin\nwhite, soft and smooth. Propolis\nprevents and treats bacterial and fungal\nskin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215509360.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(9,2,'Bee Pampered Tea Tree Propolis Soap','Clears acne, helping create a naturally\nglowing smooth skin. . Propolis prevents\nand treats bacterial and fungal skin\ninfections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215532892.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(10,2,'Bee Pampered Guava-Acapulco Propolis Soap','Guava and Acapulco treat tinea (ring\nworm) infections, eczema scabies,itch\nand insect bites. Propolis prevents and\ntreats bacterial and fungal skin\ninfections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215563876.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(11,2,'Bee Pampered Oatmeal Propolis Soap','Oatmeal moisturizes and exfoliates skin.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215583026.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(12,2,'Bee Pampered Coffee Propolis Soap','Coffee is a good antioxidant and\nexfoliant, that helps reduce skin aging.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1543180109710.jpg','','2018-11-14 16:00:00','2018-11-25 16:00:00',0),(13,1,'UPLB Honey 2','Food and Wine',1,1,1,300,10,'500 ml','http://localhost:5000/images/image-1542215653121.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(14,2,'Lip Balm','Its a perfume',5,5,1,10,15,'1 Liter','http://localhost:5000/images/image-1542264490174.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',1);
+INSERT INTO `product` VALUES (1,1,'UPLB Honey','Honey produced by Eropean honey bees,\nApis melliferra, kept in various farm and\nurban environment. Viscous and sweet,\nbest for tea and toast with butter.',1,1,1,200,10,'300 grams','http://localhost:5000/images/image-1542215316458.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(2,2,'Bee Pampered Virgin Coconut Oil Propolis Soap','Virgin Coconut Oil moisturizes skin and\nhas antioxidant properties while\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,150,10,'135 grams','http://localhost:5000/images/image-1542215348003.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(3,2,'Bee Pampered Papaya-Carrot Propolis Soap','Carrot and papaya help keep the skin\nwhite, soft and smooth. Propolis\nprevents and treats bacterial and fungal\nskin infections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215377395.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(4,2,'Bee Pampered Tea Tree Propolis Soap','Clears acne, helping create a naturally\nglowing smooth skin. . Propolis prevents\nand treats bacterial and fungal skin\ninfections',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215403795.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(5,2,'Bee Pampered Guava-Acapulco Propolis Soap','Guava and Acapulco treat tinea (ring\nworm) infections, eczema scabies,itch\nand insect bites. Propolis prevents and\ntreats bacterial and fungal skin\ninfections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215425508.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(6,2,'Bee Pampered Oatmeal Propolis Soap','Oatmeal moisturizes and exfoliates skin.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,100,10,'135 grams','http://localhost:5000/images/image-1542215447288.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(7,2,'Bee Pampered Coffee Propolis Soap','Coffee is a good antioxidant and\nexfoliant, that helps reduce skin aging.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,100,15,'135 grams','http://localhost:5000/images/image-1542259405956.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(8,2,'Bee Pampered Papaya-Carrot Propolis Soap','Carrot and papaya help keep the skin\nwhite, soft and smooth. Propolis\nprevents and treats bacterial and fungal\nskin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215509360.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(9,2,'Bee Pampered Tea Tree Propolis Soap','Clears acne, helping create a naturally\nglowing smooth skin. . Propolis prevents\nand treats bacterial and fungal skin\ninfections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215532892.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(10,2,'Bee Pampered Guava-Acapulco Propolis Soap','Guava and Acapulco treat tinea (ring\nworm) infections, eczema scabies,itch\nand insect bites. Propolis prevents and\ntreats bacterial and fungal skin\ninfections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215563876.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(11,2,'Bee Pampered Oatmeal Propolis Soap','Oatmeal moisturizes and exfoliates skin.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1542215583026.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(12,2,'Bee Pampered Coffee Propolis Soap','Coffee is a good antioxidant and\nexfoliant, that helps reduce skin aging.\nPropolis prevents and treats bacterial\nand fungal skin infections.',1,1,1,75,10,'100 grams','http://localhost:5000/images/image-1543180109710.jpg','','2018-11-14 16:00:00','2018-11-25 16:00:00',0),(13,1,'UPLB Honey 2','Food and Wine',1,1,1,300,10,'500 ml','http://localhost:5000/images/image-1542215653121.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',0),(14,2,'Lip Balm','Its a perfume',5,5,1,10,15,'1 Liter','http://localhost:5000/images/image-1542264490174.jpg','','2018-11-14 16:00:00','2018-11-14 16:00:00',1);
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,7 +312,7 @@ CREATE TABLE `stocklog` (
   PRIMARY KEY (`id`),
   KEY `product_id` (`product_id`),
   CONSTRAINT `stocklog_ibfk_1` FOREIGN KEY (`product_id`) REFERENCES `product` (`id`) ON DELETE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -295,7 +321,7 @@ CREATE TABLE `stocklog` (
 
 LOCK TABLES `stocklog` WRITE;
 /*!40000 ALTER TABLE `stocklog` DISABLE KEYS */;
-INSERT INTO `stocklog` VALUES (1,1,'2018-11-14 17:08:37',10,10),(2,2,'2018-11-14 17:09:08',10,10),(3,3,'2018-11-14 17:09:37',10,10),(4,4,'2018-11-14 17:10:03',10,10),(5,5,'2018-11-14 17:10:25',10,10),(6,6,'2018-11-14 17:10:47',10,10),(7,7,'2018-11-14 17:11:18',10,10),(8,8,'2018-11-14 17:11:49',10,10),(9,9,'2018-11-14 17:12:12',10,10),(10,10,'2018-11-14 17:12:43',10,10),(11,11,'2018-11-14 17:13:03',10,10),(12,12,'2018-11-14 17:13:24',10,10),(13,13,'2018-11-14 17:14:13',10,10);
+INSERT INTO `stocklog` VALUES (1,1,'2018-11-14 17:08:37',10,10),(2,2,'2018-11-14 17:09:08',10,10),(3,3,'2018-11-14 17:09:37',10,10),(4,4,'2018-11-14 17:10:03',10,10),(5,5,'2018-11-14 17:10:25',10,10),(6,6,'2018-11-14 17:10:47',10,10),(7,7,'2018-11-14 17:11:18',10,10),(8,8,'2018-11-14 17:11:49',10,10),(9,9,'2018-11-14 17:12:12',10,10),(10,10,'2018-11-14 17:12:43',10,10),(11,11,'2018-11-14 17:13:03',10,10),(12,12,'2018-11-14 17:13:24',10,10),(13,13,'2018-11-14 17:14:13',10,10),(14,14,'2018-11-15 06:48:10',10,10),(15,14,'2018-11-15 06:50:13',15,5),(16,7,'2018-11-15 06:55:56',15,5);
 /*!40000 ALTER TABLE `stocklog` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -312,7 +338,7 @@ CREATE TABLE `user` (
   `is_admin` tinyint(1) NOT NULL DEFAULT '0',
   PRIMARY KEY (`id`,`email`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -321,7 +347,7 @@ CREATE TABLE `user` (
 
 LOCK TABLES `user` WRITE;
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
-INSERT INTO `user` VALUES (1,'ftsaylon@up.edu.ph',1);
+INSERT INTO `user` VALUES (1,'ftsaylon@up.edu.ph',1),(3,'michael_3096@yahoo.com',1);
 /*!40000 ALTER TABLE `user` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -334,4 +360,17 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-11-15  1:17:46
+-- Dump completed on 2019-03-09 21:50:17
+
+DROP TABLE IF EXISTS `news`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `news` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `farm_id` int(11) NOT NULL,
+  `news` text NOT NULL,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `commenter` varchar(512) NOT NULL,
+  PRIMARY KEY (`id`)
+)
+

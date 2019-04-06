@@ -66,6 +66,33 @@ CREATE TABLE `cart_product` (
 -- Table structure for table `category`
 --
 
+DROP TABLE IF EXISTS `farm`;
+
+CREATE TABLE `farm`(
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) DEFAULT NULL,
+  `population` int(11),
+  `name` varchar(128) NOT NULL,
+  `lat` float(10,6) NOT NULL,
+  `lng` float(10,6) NOT NULL,
+  `type` varchar(30) NOT NULL, 
+  PRIMARY KEY (`id`),
+  KEY `user_id` (`user_id`),
+  CONSTRAINT `farm_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE SET NULL
+);
+
+DROP TABLE IF EXISTS `bee`;
+
+CREATE TABLE `bee` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `farm_id` int(11) NOT NULL,
+  `name` varchar(256) NOT NULL,
+  `description` text NOT NULL,
+  `imageUrl` varchar(1024) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `bee_ibfk_1` FOREIGN KEY (`farm_id`) REFERENCES `farm` (`id`)
+);
+
 DROP TABLE IF EXISTS `category`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;

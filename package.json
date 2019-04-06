@@ -27,7 +27,7 @@
     },
     "scripts": {
         "start": "nodemon server.js --ignore v1/",
-        "seed": "mysql -u root -p dabar < db/schema.sql && mysql -u root -p dabar < db/procedures.sql",
-        "test": "mocha --timeout 10000"
+        "test": "mocha --timeout 10000",
+        "seed": "mysql -u root -p dabar < db/schema2.sql && mysql -u root -p dabar < db/procedures.sql && mysql -u root -p dabar < db/data_only.sql"
     }
 }

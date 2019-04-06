@@ -101,7 +101,7 @@ exports.getProducts = function(req, res, next){
 	})
 	.then(result => {
 		// console.log(JSON.stringify(result, null, 2))
-		res.status(200).send({message: 'Successfully gott products', result: result[1][0], forapproval: result[0][0][0].forapproval})
+		res.status(200).send({message: 'Successfully got products', result: result[1][0], forapproval: result[0][0][0].forapproval})
 	})
 	
 	.catch(err => {
