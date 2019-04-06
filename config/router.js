@@ -6,9 +6,12 @@ var product = require('./../controllers/product'),
 	contact = require('./../controllers/contact'),
 	comment = require('./../controllers/comment'),
 	auth = require('./../controllers/auth'),
-	customer = require('./../controllers/customer');
-	cart = require('./../controllers/cart');
-	log = require('./../controllers/log');
+	customer = require('./../controllers/customer'),
+	cart = require('./../controllers/cart'),
+	log = require('./../controllers/log'),
+	farm = require('./../controllers/farm'),
+	bee = require('./../controllers/bee'),
+	news = require('./../controllers/news');
 
 var multipart = multiparty();
 
@@ -34,13 +37,39 @@ module.exports = function(router, logger) {
 	router.get('/customer/login/:mode/:email/:token', customer.login);//Exposed - Only email is needed to get key
 	router.post('/cart/getEyes', cart.getEyes)
 
+	//farm controller
+	router.get('/farm', farm.selectALL);
+	router.get('/farm/:id/products', farm.selectFarmProducts);
+	
+	//bee controller 
+	router.get('/bee', bee.selectALL);
+	router.get('/bee/:id', bee.selectOne);
+	router.get('/farm/:id/bees', farm.selectFarmBees);
+	
+	// news routes
+	router.get('/users/:id/news', news.selectByUser);
+	
 	// authentication required for customer priveleges
 	router.all('*', auth.validateUser)
 	router.all("*",function(req,res,next){
 		logger.log(`verbose`,"passed user validation");
 		next();
 	});
+	
 	router.delete('/comment/:id', comment.delete);//Exposed - No user validation
+	
+	// farm routes
+	router.post('/farm/putproduct', farm.putProductToFarm);
+	router.post('/farm', farm.selectOne);
+	router.post('/farm/putbee', farm.putBeeToFarm);
+	//bee routes
+	//news routers
+	router.post('/news/insert', news.insert);
+	router.delete('/news/:id', news.delete);
+	router.post('/news', news.selectALL);
+	//bee routers
+	router.delete('/bee/:id', bee.delete);
+	router.post('/bee/insertbee', bee.insert);
 
 	router.post('/product/:id/comment', comment.insert);	
 	router.put('/cart/putproduct/', cart.putProduct);
@@ -50,7 +79,7 @@ module.exports = function(router, logger) {
 	router.post('/cart/orders', cart.getOrders)
 	router.post('/cart/setForApproval', cart.setForApproval)
 	router.delete('/comment/:id/', comment.delete);
-
+	
 	// authentication required for admin privelges
 	router.all('*', auth.validateAdmin)
 	router.post('/admin', auth.login)
