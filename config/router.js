@@ -40,7 +40,7 @@ module.exports = function(router, logger) {
 	//farm controller
 	router.get('/farm', farm.selectALL);
 	router.get('/farm/:id/products', farm.selectFarmProducts);
-	
+	router.get('/farm/:id', farm.selectOneOpen);
 	//bee controller 
 	router.get('/bee', bee.selectALL);
 	router.get('/bee/:id', bee.selectOne);
@@ -48,6 +48,7 @@ module.exports = function(router, logger) {
 	
 	// news routes
 	router.get('/users/:id/news', news.selectByUser);
+	router.get('/news', news.selectALL);
 	
 	// authentication required for customer priveleges
 	router.all('*', auth.validateUser)
@@ -67,9 +68,14 @@ module.exports = function(router, logger) {
 	router.post('/news/insert', news.insert);
 	router.delete('/news/:id', news.delete);
 	router.post('/news', news.selectALL);
+	router.post('/news', news.selectNewsComments);
+	router.post('/news', news.insertNewsComment);
+	
 	//bee routers
 	router.delete('/bee/:id', bee.delete);
 	router.post('/bee/insertbee', bee.insert);
+	router.put('/bee/:id', bee.update);
+	router.post('/bee/:id/photo', multipart, bee.photo);
 
 	router.post('/product/:id/comment', comment.insert);	
 	router.put('/cart/putproduct/', cart.putProduct);

@@ -21,7 +21,7 @@
 
 LOCK TABLES `bee` WRITE;
 /*!40000 ALTER TABLE `bee` DISABLE KEYS */;
-INSERT INTO `bee` VALUES (1,'Honey Bee 1','Test Bee',NULL);
+INSERT INTO `bee` VALUES (1,'Honey Bee 1','Test Bee',NULL),(2,'Civet (unidentified)','Praesent blandit. Nam nulla. Integer pede justo, lacinia eget, tincidunt eget, tempus vel, pede.','http://dummyimage.com/214x246.jpg/dddddd/000000'),(3,'Red-billed hornbill','Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.','http://dummyimage.com/136x179.jpg/5fa2dd/ffffff'),(4,'Springhare','Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.\n\nProin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.','http://dummyimage.com/148x197.bmp/dddddd/000000'),(5,'Egret, snowy','In congue. Etiam justo. Etiam pretium iaculis justo.','http://dummyimage.com/179x209.bmp/5fa2dd/ffffff'),(6,'Brazilian tapir','Curabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.\n\nInteger tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.','http://dummyimage.com/118x151.bmp/ff4444/ffffff'),(7,'Fox, silver-backed','Phasellus sit amet erat. Nulla tempus. Vivamus in felis eu sapien cursus vestibulum.','http://dummyimage.com/131x145.png/ff4444/ffffff'),(8,'Red lava crab','Proin eu mi. Nulla ac enim. In tempor, turpis nec euismod scelerisque, quam turpis adipiscing lorem, vitae mattis nibh ligula nec sem.\n\nDuis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.','http://dummyimage.com/220x242.bmp/ff4444/ffffff'),(9,'Black-throated cardinal','Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.\n\nNullam sit amet turpis elementum ligula vehicula consequat. Morbi a ipsum. Integer a nibh.','http://dummyimage.com/101x113.bmp/5fa2dd/ffffff'),(10,'Antelope, four-horned','Curabitur at ipsum ac tellus semper interdum. Mauris ullamcorper purus sit amet nulla. Quisque arcu libero, rutrum ac, lobortis vel, dapibus at, diam.','http://dummyimage.com/118x223.jpg/cc0000/ffffff'),(11,'Bushbaby, large-eared','Maecenas leo odio, condimentum id, luctus nec, molestie sed, justo. Pellentesque viverra pede ac diam. Cras pellentesque volutpat dui.\n\nMaecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.','http://dummyimage.com/250x155.bmp/cc0000/ffffff');
 /*!40000 ALTER TABLE `bee` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -88,8 +88,28 @@ UNLOCK TABLES;
 
 LOCK TABLES `farm` WRITE;
 /*!40000 ALTER TABLE `farm` DISABLE KEYS */;
-INSERT INTO `farm` VALUES (1,1,100,'Farm 1',14.164849,121.241264,'Bee Farm');
+INSERT INTO `farm` VALUES (1,1,100,'Farm 1','Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus. Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel a',14.164849,121.241264,'Bee Farm');
 /*!40000 ALTER TABLE `farm` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `farm_bee`
+--
+
+LOCK TABLES `farm_bee` WRITE;
+/*!40000 ALTER TABLE `farm_bee` DISABLE KEYS */;
+INSERT INTO `farm_bee` VALUES (1,1),(1,2),(1,3),(1,4);
+/*!40000 ALTER TABLE `farm_bee` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `farm_product`
+--
+
+LOCK TABLES `farm_product` WRITE;
+/*!40000 ALTER TABLE `farm_product` DISABLE KEYS */;
+INSERT INTO `farm_product` VALUES (1,3,NULL,NULL),(1,4,NULL,NULL),(1,7,NULL,NULL);
+/*!40000 ALTER TABLE `farm_product` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -98,7 +118,18 @@ UNLOCK TABLES;
 
 LOCK TABLES `news` WRITE;
 /*!40000 ALTER TABLE `news` DISABLE KEYS */;
+INSERT INTO `news` VALUES (16,1,'Future-proofed human-resource algorithm','In congue. Etiam justo. Etiam pretium iaculis justo.\n\nIn hac habitasse platea dictumst. Etiam faucibus cursus urna. Ut tellus.','2019-04-21 18:19:23','Ddene'),(17,1,'Balanced discrete benchmark','Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.','2019-04-21 18:19:23','Hagan'),(18,1,'Focused disintermediate approach','Quisque id justo sit amet sapien dignissim vestibulum. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Nulla dapibus dolor vel est. Donec odio justo, sollicitudin ut, suscipit a, feugiat et, eros.','2019-04-21 18:19:23','Thor'),(19,1,'Triple-buffered eco-centric strategy','Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Proin risus. Praesent lectus.\n\nVestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.','2019-04-21 18:19:23','Leupold'),(20,1,'Synchronised explicit pricing structure','Nulla ut erat id mauris vulputate elementum. Nullam varius. Nulla facilisi.\n\nCras non velit nec nisi vulputate nonummy. Maecenas tincidunt lacus at velit. Vivamus vel nulla eget eros elementum pellentesque.\n\nQuisque porta volutpat erat. Quisque erat eros, viverra eget, congue eget, semper rutrum, nulla. Nunc purus.','2019-04-21 18:19:23','Von'),(21,1,'Re-engineered national methodology','Duis aliquam convallis nunc. Proin at turpis a pede posuere nonummy. Integer non velit.\n\nDonec diam neque, vestibulum eget, vulputate ut, ultrices vel, augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec pharetra, magna vestibulum aliquet ultrices, erat tortor sollicitudin mi, sit amet lobortis sapien sapien non mi. Integer ac neque.\n\nDuis bibendum. Morbi non quam nec dui luctus rutrum. Nulla tellus.','2019-04-21 18:19:23','Ingeberg'),(22,1,'Versatile client-driven infrastructure','Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.','2019-04-21 18:19:23','Janet'),(23,1,'Expanded responsive access','Etiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.','2019-04-21 18:19:23','Clareta'),(24,1,'Managed stable structure','In sagittis dui vel nisl. Duis ac nibh. Fusce lacus purus, aliquet at, feugiat non, pretium quis, lectus.\n\nSuspendisse potenti. In eleifend quam a odio. In hac habitasse platea dictumst.','2019-04-21 18:19:23','Erena'),(25,1,'Programmable radical parallelism','Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.\n\nCurabitur gravida nisi at nibh. In hac habitasse platea dictumst. Aliquam augue quam, sollicitudin vitae, consectetuer eget, rutrum at, lorem.','2019-04-21 18:19:23','Victoria');
 /*!40000 ALTER TABLE `news` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Dumping data for table `news_comment`
+--
+
+LOCK TABLES `news_comment` WRITE;
+/*!40000 ALTER TABLE `news_comment` DISABLE KEYS */;
+INSERT INTO `news_comment` VALUES (4,1,'Morbi non lectus. Aliquam sit amet diam in magna bibendum imperdiet. Nullam orci pede, venenatis non, sodales sed, tincidunt eu, felis.','2019-04-21 18:19:23','Klarrisa'),(5,2,'Mauris enim leo, rhoncus sed, vestibulum sit amet, cursus id, turpis. Integer aliquet, massa id lobortis convallis, tortor risus dapibus augue, vel accumsan tellus nisi eu orci. Mauris lacinia sapien quis libero.','2019-04-21 18:19:23','Land'),(6,3,'Maecenas ut massa quis augue luctus tincidunt. Nulla mollis molestie lorem. Quisque ut erat.','2019-04-21 18:19:23','Fair'),(7,4,'Fusce posuere felis sed lacus. Morbi sem mauris, laoreet ut, rhoncus aliquet, pulvinar sed, nisl. Nunc rhoncus dui vel sem.\n\nSed sagittis. Nam congue, risus semper porta volutpat, quam pede lobortis ligula, sit amet eleifend pede libero quis orci. Nullam molestie nibh in lectus.','2019-04-21 18:19:23','Sylvan'),(8,5,'Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vivamus vestibulum sagittis sapien. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus.\n\nEtiam vel augue. Vestibulum rutrum rutrum neque. Aenean auctor gravida sem.\n\nPraesent id massa id nisl venenatis lacinia. Aenean sit amet justo. Morbi ut odio.','2019-04-21 18:19:23','Spencer'),(9,6,'In hac habitasse platea dictumst. Morbi vestibulum, velit id pretium iaculis, diam erat fermentum justo, nec condimentum neque sapien placerat ante. Nulla justo.\n\nAliquam quis turpis eget elit sodales scelerisque. Mauris sit amet eros. Suspendisse accumsan tortor quis turpis.','2019-04-21 18:19:23','Kalina'),(10,7,'Maecenas tristique, est et tempus semper, est quam pharetra magna, ac consequat metus sapien ut nunc. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Mauris viverra diam vitae quam. Suspendisse potenti.','2019-04-21 18:19:23','Percy'),(11,8,'Phasellus in felis. Donec semper sapien a libero. Nam dui.\n\nProin leo odio, porttitor id, consequat in, consequat ut, nulla. Sed accumsan felis. Ut at dolor quis odio consequat varius.\n\nInteger ac leo. Pellentesque ultrices mattis odio. Donec vitae nisi.','2019-04-21 18:19:24','Talyah'),(12,9,'Integer tincidunt ante vel ipsum. Praesent blandit lacinia erat. Vestibulum sed magna at nunc commodo placerat.','2019-04-21 18:19:24','Kynthia'),(13,10,'Aenean fermentum. Donec ut mauris eget massa tempor convallis. Nulla neque libero, convallis eget, eleifend luctus, ultricies eu, nibh.','2019-04-21 18:19:24','Evangelin');
+/*!40000 ALTER TABLE `news_comment` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -150,4 +181,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-03-27 18:32:55
+-- Dump completed on 2019-04-22  2:21:22

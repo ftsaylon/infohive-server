@@ -42,6 +42,20 @@ exports.selectOne = function(req, res, next) {
 	})
 }
 
+exports.selectOneOpen = function(req, res, next) {
+	var query = "SELECT * FROM farm WHERE id=?";
+	dabar.executeProcedure(query, req.params.id)
+	.then(result => {
+		res.status(200).send({message: 'Successfully selected one farm', result: result[0]})
+	})
+	.catch(err => {
+		if(err.status){
+			return res.status(err.status).send(err)
+		}
+		return res.status(500).send({message: 'Uncatched case in farm.selectOneOpen', result: err})
+	})
+}
+
 exports.putProductToFarm = function(req, res, next) {
 	// var category = req.body.category;
 	// delete req.body.category;
