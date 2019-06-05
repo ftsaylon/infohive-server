@@ -14,6 +14,20 @@ exports.selectByUser = function(req, res, next) {
 	});
 };
 
+exports.selectOne = function(req, res, next) {
+	var query = "SELECT * FROM news WHERE id=?";
+	dabar.executeProcedure(query, req.params.id)
+	.then(result => {
+		res.status(200).send({message: 'Successfully selected one news', result: result})
+	})
+	.catch(err => {
+		if(err.status){
+			return res.status(err.status).send(err)
+		}
+		return res.status(500).send({message: 'Uncatched case in news.selectOne', result: err})
+	})
+}
+
 exports.selectALL = function(req, res, next) {
 	var query = "SELECT a.*";
 	query += " " + "FROM `news` a";

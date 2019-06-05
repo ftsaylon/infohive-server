@@ -105,3 +105,22 @@ exports.putBeeToFarm = function(req, res, next) {
 		return res.status(200).send({message: 'Bee is added to farm', result: result});
 	});
 };
+
+exports.deleteBeeFromFarm = function(req, res, next) {
+	db.query('DELETE FROM farm_bee WHERE bee_id=?', req.params.id, function(err, result) {
+		if (err) {
+			return res.send(500, {code: err.code});
+		}
+		return res.status(200).send({message: 'Succesfully deleted bee from farm', result: result});
+	});
+};
+
+
+exports.deleteProductFromFarm = function(req, res, next) {
+	db.query('DELETE FROM farm_product WHERE product_id=?', req.params.id, function(err, result) {
+		if (err) {
+			return res.send(500, {code: err.code});
+		}
+		return res.status(200).send({message: 'Succesfully deleted product from farm', result: result});
+	});
+};
