@@ -56,5 +56,49 @@ exports.delete = function(req, res, next) {
 	});
 };
 
+exports.update = function(req, res, next) {
+	delete req.body.completeAddress;
+	db.query('UPDATE bee SET ? WHERE id=?', [req.body, req.params.id], function(err, result) {
+			if (err) {
+					return res.send(500, {code: err.code});
+			}
+			return res.send(result);
+	});
+};
 
+exports.photo = function(req, res, next) {
+	// console.log(req.files);
+	if (req.files.file0 === undefined) {
+		res.send(400, {'error': true, 'message': 'Missing photo.'});
+		return;
+	}
+	var regex = /(?:\.([^.]+))?$/;
+	var ext = regex.exec(req.files.file0.path)[1]; 
+	var filename = req.params.id + Math.round(new Date().getTime()/1000) + "." + ext;
 
+	fs.copy(req.files.file0.path, INFOHIVE_STATIC_PATH + filename, function (e) {
+		if (e) {
+
+			res.send(400, {'error': true, 'message': e.err});
+			return;
+		}
+		db.query('UPDATE bee SET imageUrl="' + INFOHIVE_STATIC_BUCKET + filename +'" WHERE id=' + req.params.id, function(err, result) {
+			if (err) {
+				return res.send(500, {code: err.code});
+			}
+			
+			var query = "SELECT * FROM bee WHERE id=?";
+ 			console.log(query);
+			db.query(query, function(err, rows) {
+				console.log(rows);
+				if (err) {
+					return res.send(500, {code: err.code});
+				}
+				if (rows.length === 0) {
+					return res.send(404, {error:true, message:'Bee not found.'});
+				}
+				res.send(rows[0]);
+			});
+		});
+	});
+};

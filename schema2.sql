@@ -229,8 +229,12 @@ CREATE TABLE `news` (
   PRIMARY KEY (`id`),
   KEY `news_fk` (`user_id`),
   CONSTRAINT `news_fk` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=26 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Table structure for table `news_comment`
+--
 
 DROP TABLE IF EXISTS `news_comment`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
@@ -242,7 +246,8 @@ CREATE TABLE `news_comment` (
   `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `commenter` varchar(512) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Table structure for table `pricechange`
@@ -338,4 +343,4 @@ CREATE TABLE `user` (
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-04-06 22:26:28
+-- Dump completed on 2019-04-22  2:21:41

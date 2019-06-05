@@ -11,7 +11,8 @@ var product = require('./../controllers/product'),
 	log = require('./../controllers/log'),
 	farm = require('./../controllers/farm'),
 	bee = require('./../controllers/bee'),
-	news = require('./../controllers/news');
+	news = require('./../controllers/news'),
+	newscomment = require('./../controllers/newscomment');
 
 var multipart = multiparty();
 
@@ -40,7 +41,7 @@ module.exports = function(router, logger) {
 	//farm controller
 	router.get('/farm', farm.selectALL);
 	router.get('/farm/:id/products', farm.selectFarmProducts);
-	
+	router.get('/farm/:id', farm.selectOneOpen);
 	//bee controller 
 	router.get('/bee', bee.selectALL);
 	router.get('/bee/:id', bee.selectOne);
@@ -48,6 +49,9 @@ module.exports = function(router, logger) {
 	
 	// news routes
 	router.get('/users/:id/news', news.selectByUser);
+	router.get('/news', news.selectALL);
+	router.get('/news/:id', news.selectOne);
+	router.get('/news/:id/comment', newscomment.selectByNews);
 	
 	// authentication required for customer priveleges
 	router.all('*', auth.validateUser)
@@ -57,19 +61,22 @@ module.exports = function(router, logger) {
 	});
 	
 	router.delete('/comment/:id', comment.delete);//Exposed - No user validation
+	router.delete('/newscomment/:id', newscomment.delete);//Exposed - No user validation
 	
 	// farm routes
-	router.post('/farm/putproduct', farm.putProductToFarm);
 	router.post('/farm', farm.selectOne);
-	router.post('/farm/putbee', farm.putBeeToFarm);
 	//bee routes
 	//news routers
 	router.post('/news/insert', news.insert);
 	router.delete('/news/:id', news.delete);
-	router.post('/news', news.selectALL);
+	router.post('/news/:id/newscomment', newscomment.insert);	
+	router.delete('/newscomment/:id', newscomment.delete);
+
 	//bee routers
 	router.delete('/bee/:id', bee.delete);
 	router.post('/bee/insertbee', bee.insert);
+	router.put('/bee/:id', bee.update);
+	router.post('/bee/:id/photo', multipart, bee.photo);
 
 	router.post('/product/:id/comment', comment.insert);	
 	router.put('/cart/putproduct/', cart.putProduct);
@@ -117,7 +124,12 @@ module.exports = function(router, logger) {
 	router.post('/users', customer.select);
 	router.delete('/users/:id', customer.delete);
 	router.put('/users/:id', customer.setAdmin);
-
+	// farm routes
+	router.post('/farm/putproduct', farm.putProductToFarm);
+	router.post('/farm/putbee', farm.putBeeToFarm);
+	router.delete('/farm-product/:id', farm.deleteProductFromFarm);
+	router.delete('/farm-bee/:id', farm.deleteBeeFromFarm);
+	
 	router.all('*', function (req, res, next) {
 		res.send(404, {message : 'Nothing to do here.'});
 	});
